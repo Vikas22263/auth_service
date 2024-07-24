@@ -38,8 +38,22 @@ const isAuthenticated = async (req, res) => {
     return res.status(500).send({ message: error, data: {}, success: false });
   }
 };
+
+const isAdmin = async (req, res) => {
+  try {
+    const response = await userserive.isAdmin(req.body.userId);
+    return res.status(200).send({
+      message: "User is verified ",
+      data: response,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({ message: error, data: {}, success: false });
+  }
+};
 module.exports.Usercontroller = {
   createUser,
   sigIn,
   isAuthenticated,
+  isAdmin
 };

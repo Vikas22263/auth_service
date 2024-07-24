@@ -66,6 +66,14 @@ class UserService {
       console.log(error);
     }
   }
+
+  async isAdmin(userId) {
+    try {
+      return this.userRepository.idAdmin(userId);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 module.exports = UserService;
